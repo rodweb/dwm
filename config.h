@@ -29,6 +29,9 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     iscentered   isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            0,           1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           0,           -1 },
+	{ "Spotify",  NULL,       NULL,       1 << 4,       0,           0,           -1 },
+	{ "Slack",  NULL,       NULL,       1 << 3,       0,           0,           -1 },
+	{ "Google-chrome-unstable",  NULL,       NULL,       1 << 0,       0,           0,           -1 },
 };
 
 /* layout(s) */
@@ -77,7 +80,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	/* { MODKEY,                       XK_space,  setlayout,      {0} }, */
+	{ MODKEY,                       XK_w,      setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_f,      togglefullscr,  {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },

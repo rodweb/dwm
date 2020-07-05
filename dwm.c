@@ -92,7 +92,7 @@ struct Client {
 	int basew, baseh, incw, inch, maxw, maxh, minw, minh;
 	int bw, oldbw;
 	unsigned int tags;
-	int isfixed, iscentered, isfloating, isurgent, neverfocus, oldstate, isfullscreen;
+	int isfixed, iscentered, isfloating, isurgent, neverfocus, oldstate, isfullscreen, ispermanent;
 	Client *next;
 	Client *snext;
 	Monitor *mon;
@@ -144,6 +144,7 @@ typedef struct {
 	unsigned int tags;
 	int iscentered;
 	int isfloating;
+	int ispermanent;
 	int monitor;
 } Rule;
 
@@ -295,6 +296,7 @@ applyrules(Client *c)
 
 	/* rule matching */
 	c->iscentered = 0;
+        c->ispermanent = 0;
 	c->isfloating = 0;
 	c->tags = 0;
 	XGetClassHint(dpy, c->win, &ch);
@@ -308,6 +310,7 @@ applyrules(Client *c)
 		&& (!r->instance || strstr(instance, r->instance)))
 		{
 			c->iscentered = r->iscentered;
+			c->ispermanent = r->ispermanent;
 			c->isfloating = r->isfloating;
 			c->tags |= r->tags;
 			for (m = mons; m && m->num != r->monitor; m = m->next);
@@ -1067,7 +1070,7 @@ fake_signal(void)
 void
 killclient(const Arg *arg)
 {
-	if (!selmon->sel)
+	if (!selmon->sel || selmon->sel->ispermanent)
 		return;
 	if (!sendevent(selmon->sel, wmatom[WMDelete])) {
 		XGrabServer(dpy);

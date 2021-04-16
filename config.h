@@ -20,7 +20,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "tmux", "chat", "code", "web" };
+static const char *tags[] = { "tmux", "chat", "code", "web", "media" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -28,10 +28,10 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class        instance    title               tags mask     iscentered   isfloating   monitor   isterminal   noswallow  ispermanent*/
-	{ "Spotify",    NULL,       NULL,                 1 << 2,         0,           0,           -1,           0,      -1,     0 },
+	{ "Spotify",    NULL,       NULL,                 1 << 4,         0,           0,           -1,           0,      -1,     0 },
 	{ "Slack",      NULL,       NULL,                 1 << 1,         0,           0,           -1,           0,      -1,     0 },
 	{ "TelegramDesktop",  NULL,       NULL,           1 << 1,         0,           0,           -1,           0,      -1,     0 },
-	{ "Google-chrome-stable",  NULL,       NULL,      1 << 3,         0,           0,           -1,           0,      -1,     0 },
+	{ "Google-chrome",  NULL,       NULL,      1 << 3,         0,           0,           -1,           0,      -1,     0 },
 	{ "st-256color",         NULL,       NULL,      0,              0,           0,           -1,           1,      -1,     0 },
 	{ "Alacritty",         NULL,       NULL,        0,              0,           0,           -1,           1,      -1,     0 },
 	{ NULL,         NULL,       "Event Tester",     0,              0,           0,           -1,           0,      1,      0 }, /* xev */
@@ -85,10 +85,6 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Tab,    view_adjacent,  {.i = -1} },
 	{ MODKEY,                       XK_space,  zoom,           {0} },
 	{ MODKEY,                       XK_w,      cyclelayout,    {.i = +1} },
-	/* { MODKEY,                       XK_w,      setlayout,      {0} }, */
-	/* { MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} }, */
-	/* { MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} }, */
-	/* { MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[1]} }, */
 	{ MODKEY|ShiftMask,             XK_g,      togglefloating, {0} },
 	{ MODKEY,                       XK_g,      togglefullscr,  {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
@@ -101,6 +97,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_s,                      1)
 	TAGKEYS(                        XK_d,                      2)
 	TAGKEYS(                        XK_f,                      3)
+	TAGKEYS(                        XK_m,                      4)
 	{ MODKEY,                       XK_z,      quit,           {0} },
 	{ MODKEY,                       XK_u,      focusurgent,    {0} },
 };

@@ -20,7 +20,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "tmux", "chat", "code", "web", "media" };
+static const char *tags[] = { "tmux", "chat", "code", "web", "media", "meet" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -30,6 +30,7 @@ static const Rule rules[] = {
 	/* class        instance    title               tags mask     iscentered   isfloating   monitor   isterminal   noswallow  ispermanent*/
 	{ "Spotify",    NULL,       NULL,                 1 << 4,         0,           0,           -1,           0,      -1,     0 },
 	{ "Slack",      NULL,       NULL,                 1 << 1,         0,           0,           -1,           0,      -1,     0 },
+	{ "zoom",      NULL,       NULL,                 1 << 5,         0,           0,           -1,           0,      -1,     0 },
 	{ "TelegramDesktop",  NULL,       NULL,           1 << 1,         0,           0,           -1,           0,      -1,     0 },
 	{ "jetbrains-webstorm",  NULL,       NULL,      1 << 2,         0,           0,           -1,           0,      -1,     0 },
 	{ "Google-chrome",  NULL,       NULL,      1 << 3,         0,           0,           -1,           0,      -1,     0 },
@@ -87,20 +88,21 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Tab,    view_adjacent,  {.i = -1} },
 	{ MODKEY,                       XK_space,  zoom,           {0} },
 	{ MODKEY,                       XK_w,      cyclelayout,    {.i = +1} },
-	{ MODKEY|ShiftMask,             XK_g,      togglefloating, {0} },
-	{ MODKEY,                       XK_g,      togglefullscr,  {0} },
+	{ MODKEY|ShiftMask,             XK_m,      togglefloating, {0} },
+	{ MODKEY,                       XK_m,      togglefullscr,  {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	/* { MODKEY,                       XK_comma,  focusmon,       {.i = -1 } }, */
+	/* { MODKEY,                       XK_period, focusmon,       {.i = +1 } }, */
+	/* { MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } }, */
+	/* { MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } }, */
 	TAGKEYS(                        XK_a,                      0)
 	TAGKEYS(                        XK_s,                      1)
 	TAGKEYS(                        XK_d,                      2)
 	TAGKEYS(                        XK_f,                      3)
-	TAGKEYS(                        XK_m,                      4)
-	{ MODKEY,                       XK_z,      quit,           {0} },
+	TAGKEYS(                        XK_g,                      4)
+	TAGKEYS(                        XK_z,                      5)
+	{ MODKEY,                       XK_x,      quit,           {0} },
 	{ MODKEY,                       XK_u,      focusurgent,    {0} },
 };
 

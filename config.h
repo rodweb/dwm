@@ -31,7 +31,9 @@ static const Rule rules[] = {
 	{ "Spotify",    NULL,       NULL,                 1 << 4,         0,           0,           -1,           0,      -1,     0 },
 	{ "Slack",      NULL,       NULL,                 1 << 1,         0,           0,           -1,           0,      -1,     0 },
 	{ "TelegramDesktop",  NULL,       NULL,           1 << 1,         0,           0,           -1,           0,      -1,     0 },
+	{ "jetbrains-webstorm",  NULL,       NULL,      1 << 2,         0,           0,           -1,           0,      -1,     0 },
 	{ "Google-chrome",  NULL,       NULL,      1 << 3,         0,           0,           -1,           0,      -1,     0 },
+	{ "Tmux",  NULL,       NULL,      1 << 0,         0,           0,           -1,           0,      -1,     0 },
 	{ "st-256color",         NULL,       NULL,      0,              0,           0,           -1,           1,      -1,     0 },
 	{ "Alacritty",         NULL,       NULL,        0,              0,           0,           -1,           1,      -1,     0 },
 	{ NULL,         NULL,       "Event Tester",     0,              0,           0,           -1,           0,      1,      0 }, /* xev */

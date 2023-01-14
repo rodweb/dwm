@@ -29,10 +29,11 @@ static const Rule rules[] = {
 	 */
 	/* class        instance    title               tags mask     iscentered   isfloating   monitor   isterminal   noswallow  ispermanent*/
 	{ "Spotify",    NULL,       NULL,                 1 << 4,         0,           0,           -1,           0,      -1,     0 },
-	{ "Slack",      NULL,       NULL,                 1 << 1,         0,           0,           -1,           0,      -1,     0 },
+	{ "discord",      NULL,       NULL,                 1 << 1,         0,           0,           -1,           0,      -1,     0 },
 	{ "zoom",      NULL,       NULL,                 1 << 5,         0,           0,           -1,           0,      -1,     0 },
 	{ "TelegramDesktop",  NULL,       NULL,           1 << 1,         0,           0,           -1,           0,      -1,     0 },
 	{ "jetbrains-webstorm",  NULL,       NULL,      1 << 2,         0,           0,           -1,           0,      -1,     0 },
+	{ "Emacs",  NULL,       NULL,      1 << 2,         0,           0,           -1,           0,      -1,     0 },
 	{ "Google-chrome",  NULL,       NULL,      1 << 3,         0,           0,           -1,           0,      -1,     0 },
 	{ "Tmux",  NULL,       NULL,      1 << 0,         0,           0,           -1,           0,      -1,     0 },
 	{ "st-256color",         NULL,       NULL,      0,              0,           0,           -1,           1,      -1,     0 },
@@ -84,18 +85,18 @@ static Key keys[] = {
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
 	{ ALTKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY,                       XK_Tab,    view_adjacent,  {.i = +1} },
-	{ MODKEY|ShiftMask,             XK_Tab,    view_adjacent,  {.i = -1} },
+	/* { MODKEY,                       XK_Tab,    view_adjacent,  {.i = +1} }, */
+	/* { MODKEY|ShiftMask,             XK_Tab,    view_adjacent,  {.i = -1} }, */
 	{ MODKEY,                       XK_space,  zoom,           {0} },
 	{ MODKEY,                       XK_w,      cyclelayout,    {.i = +1} },
 	{ MODKEY|ShiftMask,             XK_m,      togglefloating, {0} },
 	{ MODKEY,                       XK_m,      togglefullscr,  {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	/* { MODKEY,                       XK_comma,  focusmon,       {.i = -1 } }, */
-	/* { MODKEY,                       XK_period, focusmon,       {.i = +1 } }, */
-	/* { MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } }, */
-	/* { MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } }, */
+	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
+	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	TAGKEYS(                        XK_a,                      0)
 	TAGKEYS(                        XK_s,                      1)
 	TAGKEYS(                        XK_d,                      2)

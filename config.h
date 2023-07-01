@@ -27,18 +27,18 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class        instance    title               tags mask     iscentered   isfloating   monitor   isterminal   noswallow  ispermanent*/
-	{ "Spotify",    NULL,       NULL,                 1 << 4,         0,           0,           -1,           0,      -1,     0 },
-	{ "discord",      NULL,       NULL,                 1 << 1,         0,           0,           -1,           0,      -1,     0 },
-	{ "zoom",      NULL,       NULL,                 1 << 5,         0,           0,           -1,           0,      -1,     0 },
-	{ "TelegramDesktop",  NULL,       NULL,           1 << 1,         0,           0,           -1,           0,      -1,     0 },
-	{ "jetbrains-webstorm",  NULL,       NULL,      1 << 2,         0,           0,           -1,           0,      -1,     0 },
-	{ "Emacs",  NULL,       NULL,      1 << 2,         0,           0,           -1,           0,      -1,     0 },
-	{ "Google-chrome",  NULL,       NULL,      1 << 3,         0,           0,           -1,           0,      -1,     0 },
-	{ "Tmux",  NULL,       NULL,      1 << 0,         0,           0,           -1,           0,      -1,     0 },
-	{ "st-256color",         NULL,       NULL,      0,              0,           0,           -1,           1,      -1,     0 },
-	{ "Alacritty",         NULL,       NULL,        0,              0,           0,           -1,           1,      -1,     0 },
-	{ NULL,         NULL,       "Event Tester",     0,              0,           0,           -1,           0,      1,      0 }, /* xev */
+	/* class                instance title           tags mask iscentered isfloating monitor isterminal noswallow ispermanent*/
+	{ "Spotify",            NULL,    NULL,           1 << 4,   0,         0,         -1,     0,         -1,       0 },
+	{ "discord",            NULL,    NULL,           1 << 1,   0,         0,         -1,     0,         -1,       0 },
+	{ "zoom",               NULL,    NULL,           1 << 5,   0,         0,         -1,     0,         -1,       0 },
+	{ "TelegramDesktop",    NULL,    NULL,           1 << 1,   0,         0,         -1,     0,         -1,       0 },
+	{ "jetbrains-webstorm", NULL,    NULL,           1 << 2,   0,         0,         -1,     0,         -1,       0 },
+	{ "Emacs",              NULL,    NULL,           1 << 2,   0,         0,         -1,     0,         -1,       0 },
+	{ "Google-chrome",      NULL,    NULL,           1 << 3,   0,         0,         -1,     0,         -1,       0 },
+	{ "Tmux",               NULL,    NULL,           1 << 0,   0,         0,         -1,     0,         -1,       0 },
+	{ "st-256color",        NULL,    NULL,           0,        0,         0,         -1,     1,         -1,       0 },
+	{ "Alacritty",          NULL,    NULL,           0,        0,         0,         -1,     1,         -1,       0 },
+	{ NULL,                 NULL,    "Event Tester", 0,        0,         0,         -1,     0,         1,        0 }, /* xev */
 };
 
 /* layout(s) */
@@ -48,6 +48,7 @@ static const int resizehints = 0;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
+	{ "[D]",      deck },
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
@@ -75,7 +76,7 @@ static const char *termcmd[]  = { "st", NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_t,      spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -83,11 +84,11 @@ static Key keys[] = {
 	{ MODKEY,                       XK_p,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
+	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ ALTKEY,                       XK_Tab,    view,           {0} },
 	/* { MODKEY,                       XK_Tab,    view_adjacent,  {.i = +1} }, */
 	/* { MODKEY|ShiftMask,             XK_Tab,    view_adjacent,  {.i = -1} }, */
-	{ MODKEY,                       XK_space,  zoom,           {0} },
+	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_w,      cyclelayout,    {.i = +1} },
 	{ MODKEY|ShiftMask,             XK_m,      togglefloating, {0} },
 	{ MODKEY,                       XK_m,      togglefullscr,  {0} },
